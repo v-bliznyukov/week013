@@ -1,0 +1,22 @@
+Deadlock avoidance algorithm can tell in advance whether the recourse should be granted or not, and help to allocate resources effectively, however,
+System needs to know in advance the maximum of resources requirements for all processes, which is often hard to estimate.
+So it would work fine for processes which resources are specified beforehand, but it is almost impossible. 
+
+Deadlock prevention gets rid of deadlock via attacking one or more of the 4 conditions fro deadlocks:
+
+Attacking mutual exclusion is efficient when the data is read-only, or use only one processor to request a resource (like daemon & printer)
+However, this may cause another deadlock in the output data (2 processes fill up 1/2 of a file each)
+
+Attacking hold & wait condition, is effective if all processes specify what recourses they will need so they will not request new recourse while already holding one, but again, 
+It is hard to specify how many recourses process will need.
+
+Attacking no preemption is effective for recourses that can be virtualised (printed) and if there is enough memory to store processes in some sort of queue for the actual physical resource that is controlled by one particular process (daemon).
+
+Attacking circular wait condition is effective only if we can have resources that can hold only one resource at a time, or when we can assign each process a number and satisfy the request be that order (however, it is often impossible to choose the order that would meet all processes requirements)
+
+Deadlock recovery is suitable only if we do not know about processes recourse demand in advance and cannot use any of the techniques mentioned above, 
+all of the recovery methods have drawbacks: 
+Preemption is highly dependent on the process nature/behaviour, 
+Rollback requires additional memory for storing process states, 
+recourses, and memory images, which may not be effective,
+Killing a process may result in further incorrect/unsafe computation.
